@@ -88,8 +88,8 @@ class ProductDetailViewController: UIViewController {
         guard let photos = product?.photo else { return }
         var images = [UIImage]()
         
-        //DispatchQueue.global().async {
-            //let semaphore = DispatchSemaphore(value: 0)
+        DispatchQueue.global().async {
+            let semaphore = DispatchSemaphore(value: 0)
             
             for url in photos {
                 if let url = URL(string: url) {
@@ -98,17 +98,17 @@ class ProductDetailViewController: UIViewController {
                         switch result {
                         case .success(let value):
                             images.append(value.image)
-                            //semaphore.signal()
+                            semaphore.signal()
                         case .failure(let error):
                             print(error)
-                            //semaphore.signal()
+                            semaphore.signal()
                         }
                     }
-                    //semaphore.wait()
+                    semaphore.wait()
                 }
             }
             completion(images)
-       // }
+        }
     }
     
     override func viewDidLayoutSubviews() {

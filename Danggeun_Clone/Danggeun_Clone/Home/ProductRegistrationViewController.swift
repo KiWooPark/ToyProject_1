@@ -82,9 +82,11 @@ class ProductRegistraionViewController: UIViewController, PhotosCollectionViewDe
         var count = 0
         
         for i in 0..<uploadImagesData.count {
-            FirebaseStorageManager.uploadImage(image: uploadImagesData[i]) { url in
+            imagesURL.append("")
+            FirebaseStorageManager.uploadImage(image: uploadImagesData[i],position: i) { url,position in
                 guard let url = url else { return }
-                self.imagesURL.append("\(url)")
+                
+                self.imagesURL[position] = url.absoluteString
                 
                 count += 1
             

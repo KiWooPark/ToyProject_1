@@ -9,14 +9,9 @@ import Foundation
 import FirebaseStorage
 import Photos
 
-// completion: @escaping (URL?) -> ()
-
 class FirebaseStorageManager {
     
-    static func uploadImage(image: Data, completion: @escaping (URL?) -> ())  {
-        
-        
-        let semaphore = DispatchSemaphore(value: 1)
+    static func uploadImage(image: Data, position: Int, completion: @escaping (URL?,Int) -> ())  {
         
         let metaData = StorageMetadata()
         metaData.contentType = "image/jpeg"
@@ -26,19 +21,15 @@ class FirebaseStorageManager {
         
         let firebaseReference = Storage.storage().reference().child("images/" + imageName)
         
-        print("시작")
-        semaphore.signal()
         firebaseReference.putData(image, metadata: metaData) { metaData, error in
             if let error = error {
                 print("사진 업로드 에러 = \(error)")
             } else {
-                print("완료")
-                semaphore.wait()
                 firebaseReference.downloadURL { url, error in
                     if let error = error {
                         print("URL 다운로드 에러 = \(error)")
                     }
-                    completion(url)
+                    completion(url,position)
                 }
             }
         }
