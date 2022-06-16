@@ -20,8 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let userData = UserDefaults.standard.object(forKey: "LoginUser") as? Data {
             print("데이터 있음")
             let mainStoryboard : UIStoryboard = UIStoryboard(name: "Tabbar", bundle: nil)
-            let vc = mainStoryboard.instantiateViewController(withIdentifier: "tabBarRootView")
-            //let vc = mainStoryboard.instantiateViewController(withIdentifier: "tabbar")
+            let vc = mainStoryboard.instantiateViewController(withIdentifier: "tabbar")
 
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
@@ -30,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             print("데이터 없음")
             let mainStoryboard : UIStoryboard = UIStoryboard(name: "Login", bundle: nil)
             let vc = mainStoryboard.instantiateViewController(withIdentifier: "login")
+            //let vc = mainStoryboard.instantiateViewController(withIdentifier: "nickname")
             self.window?.rootViewController = vc
             self.window?.makeKeyAndVisible()
         }

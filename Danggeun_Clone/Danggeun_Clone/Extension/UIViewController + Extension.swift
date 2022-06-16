@@ -1,11 +1,11 @@
 //
-//  Extension_UIViewController.swift
+//  Preview.swift
 //  Danggeun_Clone
 //
-//  Created by PKW on 2022/05/09.
+//  Created by PKW on 2022/06/05.
 //
 
-
+import Foundation
 import UIKit
 
 extension UIViewController {
@@ -18,3 +18,8 @@ extension UIViewController {
         present(alert, animated: true)
     }
 }
+
+
+
+
+

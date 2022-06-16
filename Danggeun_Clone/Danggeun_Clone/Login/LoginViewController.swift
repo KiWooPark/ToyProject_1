@@ -10,26 +10,12 @@ import UIKit
 class LoginViewController: UIViewController {
     
     @IBOutlet var startButton: UIButton!
-    var user: UserModel?
+    //var user: UserModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        
-        getLoginUserData()
-        
-    }
-    
-    func getLoginUserData() {
-        guard let loginUser = UserDefaults.standard.object(forKey: "LoginUser") as? Data else { return }
-        
-        let decoder = JSONDecoder()
-        do {
-            user = try decoder.decode(UserModel.self, from: loginUser)
-        } catch {
-            print("유저정보 가져오기 실패")
-        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

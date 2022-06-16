@@ -22,7 +22,7 @@ class ProductRegistraionViewController: UIViewController, PhotosCollectionViewDe
         uploadImagesData.remove(at: index)
         photosCollectionView.reloadData()
     }
-
+    
     @IBOutlet var photosCollectionView: UICollectionView!
     @IBOutlet var productTitleTextField: UITextField!
     @IBOutlet var categoryLabel: UILabel!
@@ -55,13 +55,8 @@ class ProductRegistraionViewController: UIViewController, PhotosCollectionViewDe
         
         let decoder = JSONDecoder()
         self.user = try? decoder.decode(UserModel.self, from: userData)
-      
-        contentPlaceholderLabel.text = "\(self.user?.address ?? "")에 올릴 게시글 내용을 작성해주세요.(가품 및 판매금지품목은 게시가 제한될 수 있어요."
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
+        contentPlaceholderLabel.text = "\(self.user?.address ?? "")에 올릴 게시글 내용을 작성해주세요.(가품 및 판매금지품목은 게시가 제한될 수 있어요."
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -81,22 +76,29 @@ class ProductRegistraionViewController: UIViewController, PhotosCollectionViewDe
     @IBAction func tapDone(_ sender: Any)  {
         var count = 0
         
-        for i in 0..<uploadImagesData.count {
-            imagesURL.append("")
-            FirebaseStorageManager.uploadImage(image: uploadImagesData[i],position: i) { url,position in
-                guard let url = url else { return }
-                
-                self.imagesURL[position] = url.absoluteString
-                
-                count += 1
-            
-                if count == self.uploadImagesData.count {
-                    self.addDocument()
+        if uploadImagesData.isEmpty {
+            addDocument()
+        } else {
+            for i in 0..<uploadImagesData.count {
+                imagesURL.append("")
+                FirebaseStorageManager.uploadImage(image: uploadImagesData[i],
+                                                   position: i,
+                                                   uploadType: UploadType.addProductImage) { url,position in
+                    
+                    guard let url = url else { return }
+                    
+                    self.imagesURL[position] = url.absoluteString
+                    
+                    count += 1
+                    
+                    if count == self.uploadImagesData.count {
+                        self.addDocument()
+                    }
                 }
             }
         }
     }
-
+    
     
     func addDocument() {
         guard let product = productTitleTextField.text else { return }
@@ -203,7 +205,7 @@ extension ProductRegistraionViewController: UICollectionViewDelegate {
                 var totalCount = self.selectedImages.count
                 
                 presentImagePicker(imagePicker) { asset in
-
+                    
                     if totalCount >= 10 {
                         self.imagePicker.deselect(asset: asset)
                         guard let vc = self.storyboard?.instantiateViewController(withIdentifier: "photoPopupView") as? PhotoPopupViewController else { return }

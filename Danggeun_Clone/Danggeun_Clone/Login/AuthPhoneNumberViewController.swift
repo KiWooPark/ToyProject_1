@@ -136,7 +136,8 @@ class AuthPhoneNumberViewController: UIViewController {
                         nickName: userData["nickname"] as? String ?? "",
                         phone: userData["phoneNumber"] as? String ?? "",
                         lat: userData["latitude"] as? Double ?? 0.0,
-                        lon: userData["longitude"] as? Double ?? 0.0)
+                        lon: userData["longitude"] as? Double ?? 0.0,
+                        profileImageUrl: userData["profileImage"] as? String ?? "")
                     
                     let encoder = JSONEncoder()
 

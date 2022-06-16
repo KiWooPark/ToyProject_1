@@ -358,31 +358,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yiz-Lx-Wvb">
-                                <rect key="frame" x="10" y="54" width="394" height="224"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user" translatesAutoresizingMaskIntoConstraints="NO" id="Xyl-gW-grC">
+                                <rect key="frame" x="145" y="44" width="124" height="124"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Xyl-gW-grC" secondAttribute="height" multiplier="1:1" id="i16-w5-UdJ"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Igo-49-KXB">
+                                <rect key="frame" x="145" y="44" width="124" height="124"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="addProfileImageButton:" destination="W6x-WL-uW1" eventType="touchUpInside" id="Y5w-uz-qtd"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="yiz-Lx-Wvb">
+                                <rect key="frame" x="10" y="188" width="394" height="132.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="닉네임을 입력해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3HS-nD-LLv">
-                                        <rect key="frame" x="0.0" y="0.0" width="156.5" height="50"/>
+                                        <rect key="frame" x="119" y="0.0" width="156.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="닉네임을 입력해주세요." textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s7j-UE-jN2">
-                                        <rect key="frame" x="0.0" y="58" width="394" height="50"/>
+                                        <rect key="frame" x="0.0" y="30.5" width="394" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                         <connections>
                                             <outlet property="delegate" destination="W6x-WL-uW1" id="Xrt-cX-3U1"/>
                                         </connections>
                                     </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAh-9b-5ev">
-                                        <rect key="frame" x="0.0" y="116" width="394" height="50"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAh-9b-5ev">
+                                        <rect key="frame" x="195" y="74.5" width="4" height="17"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xlk-4d-nx6">
-                                        <rect key="frame" x="0.0" y="174" width="394" height="50"/>
+                                        <rect key="frame" x="0.0" y="101.5" width="394" height="31"/>
                                         <color key="backgroundColor" red="0.93072086570000001" green="0.48982542750000002" blue="0.20381253960000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
@@ -395,27 +408,37 @@
                                 <constraints>
                                     <constraint firstItem="xlk-4d-nx6" firstAttribute="centerX" secondItem="yiz-Lx-Wvb" secondAttribute="centerX" id="NPd-8W-4AY"/>
                                     <constraint firstItem="QAh-9b-5ev" firstAttribute="centerX" secondItem="yiz-Lx-Wvb" secondAttribute="centerX" id="Nu8-fT-oWA"/>
+                                    <constraint firstItem="xlk-4d-nx6" firstAttribute="leading" secondItem="yiz-Lx-Wvb" secondAttribute="leading" id="T7a-dA-oBK"/>
                                     <constraint firstAttribute="trailing" secondItem="s7j-UE-jN2" secondAttribute="trailing" id="VaQ-ac-2hl"/>
+                                    <constraint firstAttribute="trailing" secondItem="xlk-4d-nx6" secondAttribute="trailing" id="cQL-cT-JcA"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WDD-U5-QqE"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="yiz-Lx-Wvb" firstAttribute="top" secondItem="Xyl-gW-grC" secondAttribute="bottom" constant="20" id="1DL-Sv-Sjt"/>
+                            <constraint firstItem="Igo-49-KXB" firstAttribute="bottom" secondItem="Xyl-gW-grC" secondAttribute="bottom" id="3af-6r-fbw"/>
+                            <constraint firstItem="Xyl-gW-grC" firstAttribute="top" secondItem="WDD-U5-QqE" secondAttribute="top" id="77T-C8-gPh"/>
+                            <constraint firstItem="Igo-49-KXB" firstAttribute="top" secondItem="Xyl-gW-grC" secondAttribute="top" id="94A-kj-4zW"/>
                             <constraint firstItem="WDD-U5-QqE" firstAttribute="trailing" secondItem="yiz-Lx-Wvb" secondAttribute="trailing" constant="10" id="OF4-yf-s6P"/>
-                            <constraint firstItem="yiz-Lx-Wvb" firstAttribute="top" secondItem="WDD-U5-QqE" secondAttribute="top" constant="10" id="SYU-A4-OpM"/>
+                            <constraint firstItem="Xyl-gW-grC" firstAttribute="centerX" secondItem="88w-aM-ynZ" secondAttribute="centerX" id="XG9-Mt-F9U"/>
+                            <constraint firstItem="Xyl-gW-grC" firstAttribute="width" secondItem="88w-aM-ynZ" secondAttribute="width" multiplier="0.3" id="nkf-cL-udJ"/>
                             <constraint firstItem="yiz-Lx-Wvb" firstAttribute="leading" secondItem="WDD-U5-QqE" secondAttribute="leading" constant="10" id="wEf-RH-AQc"/>
+                            <constraint firstItem="Igo-49-KXB" firstAttribute="trailing" secondItem="Xyl-gW-grC" secondAttribute="trailing" id="yk0-66-SwQ"/>
+                            <constraint firstItem="Igo-49-KXB" firstAttribute="leading" secondItem="Xyl-gW-grC" secondAttribute="leading" id="zM0-nO-2TM"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="nicknameCheckLabel" destination="QAh-9b-5ev" id="O0T-on-ku3"/>
                         <outlet property="nicknameTextField" destination="s7j-UE-jN2" id="dmc-qT-7hg"/>
                         <outlet property="okButton" destination="xlk-4d-nx6" id="pD9-SG-Epz"/>
+                        <outlet property="profileImageView" destination="Xyl-gW-grC" id="aeK-PP-WcN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aZV-dx-Lek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2691" y="320"/>
+            <point key="canvasLocation" x="2689.8550724637685" y="319.41964285714283"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -423,6 +446,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Image" width="500" height="500"/>
+        <image name="user" width="256" height="256"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -10,6 +10,8 @@ import Foundation
 
 struct ProductRegistrationModel {
     var regionName: String?
+    var phoneNumber: String
+    var profileImageURL: String?
     var photo: [String]
     var title: String
     var category: String
